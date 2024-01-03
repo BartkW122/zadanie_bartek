@@ -9,7 +9,7 @@ int main() {
  srand(time(NULL));
 
     for(int i = 0;i<12;i++){
-        tab[i]=rand() % 100 + 1;
+        tab[i]=rand() % 125 + 1;
     }
     for(int i = 0;i<12;i++){
         cout<<tab[i]<<" ";
