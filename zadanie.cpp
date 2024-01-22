@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -80,18 +79,52 @@ void sortowanie_przez_scalanie(int tab[],int lewa_s,int prawa_s){
     przypisywanie_do_sortowania(tab,lewa_s,srodek,prawa_s);
     }
 }
+void wstrzasanie(int tab[], int rozmiar){
+    int poczatek = 0;
+    int koniec = rozmiar - 1;
+    
+    while (poczatek < koniec) {
+        for (int i = poczatek; i < koniec; i++) {
+            if (tab[i] > tab[i + 1]) {
+                swap(tab[i], tab[i + 1]);
+            }
+        }
+        koniec--;
+
+        for (int i = koniec - 1; i >= poczatek; i--) {
+            if (tab[i] > tab[i + 1]) {
+                swap(tab[i], tab[i + 1]);
+            }
+        }
+        poczatek++;
+    }
+
+    cout << "\n wstrząsanie:";
+    for (int i = 0; i < rozmiar; i++) {
+        cout << tab[i] << " ";
+    }
+}
 int main() {
    const int rozmiar=12;
+   
     int tab[rozmiar];
+    
     wypelnianie(tab,rozmiar);
+    
     wyswietlanie(tab,rozmiar);
+    
     cout<<endl;
+    
     bombelkowe(tab,rozmiar);
+    
     cout<<"\nsortowanie przez zcalanie:";
+    
     sortowanie_przez_scalanie(tab,0,rozmiar-1);
+    
     for(int i = 0;i<rozmiar;i++){
     cout<<tab[i]<<" ";
     }
+    
+     wstrzasanie(tab, rozmiar);
     return 0;
 }
-
