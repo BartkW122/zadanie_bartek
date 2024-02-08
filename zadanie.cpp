@@ -112,7 +112,23 @@ void sortowanie_przez_wstawianie(int tab[], int rozmiar) {
         tab[j + 1] = temp;
     }
 }
+void quicksort(int tab[], int poczatek, int koniec) {
+    if (poczatek < koniec) {
+        int pivot = tab[koniec];
+        int indeks = poczatek - 1;
 
+        for (int j = poczatek; j <= koniec - 1; j++) {
+            if (tab[j] <= pivot) {
+                indeks++;
+                swap(tab[indeks], tab[j]);
+            }
+        }
+        swap(tab[indeks + 1], tab[koniec]);
+
+        quicksort(tab, poczatek, indeks);
+        quicksort(tab, indeks + 2, koniec);
+    }
+}
 int main() {
     const int rozmiar = 12;
     int tab[rozmiar];
@@ -143,6 +159,11 @@ int main() {
     for(int i = 0; i < rozmiar; i++) {
         cout << tab[i] << " ";
     }
+    quicksort(tab, 0, rozmiar - 1);
 
+    cout << "\nquicksort: ";
+    for (int i = 0; i < rozmiar; i++) {
+        cout << tab[i] << " ";
+    }
     return 0;
 }
