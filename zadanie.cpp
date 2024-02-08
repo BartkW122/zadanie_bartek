@@ -36,7 +36,7 @@ void bombelkowe(int tab[], int rozmiar){
     }
 
 }
-void przypisywanie_do_sortowania(int tab[], int lewa_s, int srodek, int prawa_s) {
+void przypisywanie_do_sortowania_przez_scalanie(int tab[], int lewa_s, int srodek, int prawa_s) {
     int l = srodek - lewa_s + 1;
     int p = prawa_s - srodek;
     int tab_lewa[l];
