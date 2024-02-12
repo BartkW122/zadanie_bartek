@@ -34,18 +34,41 @@ for(int i = 0 ;i<rozmiar;i++){
 }
 void wyszkiwanie_z_wartowniekiem(int tab[],int rozmiar){
 int szukanna = 10;
-for(int i = 0 ;i<rozmiar;i++){
-    if(szukanna==tab[i]){
-        cout<<endl;
-        cout<<"wyszukiwanie z wartownikiem:"<<"Liczba "<<szukanna<<" zanjduje sie w tablicy na indeksie "<<i;
-    }else{
-    cout<<"wyszukiwanie z wartownikiem:"<<"Liczba "<<szukanna<<" zanjduje sie w tablicy na indeksie "<<"-1";
+int indeks = -1; 
 
-
+for(int i = 0; i < rozmiar; i++) {
+    if(szukanna == tab[i]) {
+        indeks = i; 
+        break; 
     }
+}
+cout<<endl;
+if (indeks != -1) {
+    cout << "wyszukiwanie z wartownikiem: Liczba " << szukanna << " znajduje się w tablicy na indeksie " << indeks;
+} else {
+    cout << "wyszukiwanie z wartownikiem: Liczba " << szukanna << " nie znajduje się w tablicy.";
+}
 
 }
+
+void wyszkiwanie_binarne(int tab[],int rozmiar){
+int szukanna = 23;
+int mid = rozmiar/2;
+int srodek =tab[mid];
+ cout<<"\n"<<srodek;
+ 
+ for(int i = 0;i<rozmiar;i++){
+    if(tab[i]==tab[mid]){
+        cout << "wyszukiwanie z wartownikiem: Liczba " << szukanna << " znajduje się w tablicy na indeksie " << i;
+    }
+    if(szukanna>tab[mid]){
+         
+    }
+ }
+
+
 }
+
 int main() {
     const int rozmiar= 12;
     int tab[rozmiar]={12,3,45,65,18,23,45,13,10,27,49,1};
@@ -56,5 +79,6 @@ int main() {
     bombelkowe(tab,rozmiar);
     wyszkiwanie_liniowe(tab,rozmiar);
     wyszkiwanie_z_wartowniekiem(tab,rozmiar);
+    wyszkiwanie_binarne(tab,rozmiar);
     return 0;
 }
