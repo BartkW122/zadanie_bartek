@@ -1,6 +1,5 @@
-
 #include <iostream>
-
+#include <algorithm>
 
 using namespace std;
 
@@ -46,29 +45,60 @@ cout<<endl;
 if (indeks != -1) {
     cout << "wyszukiwanie z wartownikiem: Liczba " << szukanna << " znajduje się w tablicy na indeksie " << indeks;
 } else {
-    cout << "wyszukiwanie z wartownikiem: Liczba " << szukanna << " nie znajduje się w tablicy.";
+    cout << "wyszukiwanie z wartownikiem: Liczba " << szukanna << "znajduje się w tablicy na indeksie -1";
 }
 
 }
 
 void wyszkiwanie_binarne(int tab[],int rozmiar){
-int szukanna = 23;
-int mid = rozmiar/2;
-int srodek =tab[mid];
- cout<<"\n"<<srodek;
- 
- for(int i = 0;i<rozmiar;i++){
-    if(tab[i]==tab[mid]){
-        cout << "wyszukiwanie z wartownikiem: Liczba " << szukanna << " znajduje się w tablicy na indeksie " << i;
-    }
-    if(szukanna>tab[mid]){
-         
-    }
- }
+    int szukanna = 100;
+    int lewy = 0;
+    int prawy = rozmiar - 1;
+    int indeks =-1;
 
+   do{
+        int mid = lewy + (prawy - lewy) / 2;
 
+        if (tab[mid] == szukanna) {
+            indeks = mid;
+            break;
+        }
+        else if (tab[mid] < szukanna) {
+            lewy = mid + 1;
+        }
+        else {
+            prawy = mid - 1;
+        }
+    }while(lewy <= prawy);
+    cout<<endl;
+   if (indeks != -1) {
+        cout <<"wyszukiwanie binarne: Liczba "<< szukanna << " znajduje się w tablicy na indeksie " << indeks ;
+    } else {
+        cout <<"wyszukiwanie binarne: Liczba "<< szukanna << " znajduje się w tablicy na indeksie -1" ;
+    }
+    
 }
+void wyszukiwanie_skokowe(int tab[], int rozmiar) {
+    int szukana = 10;
+    int poczatek = 0;
+    int koniec = rozmiar - 1;
+    int srodek = poczatek + ((szukana - tab[poczatek]) * (koniec - poczatek)) / (tab[koniec] - tab[poczatek]);
+    cout<<endl;
 
+    if (szukana == tab[srodek]) {
+        cout << "wyszukiwanie skokowe: Liczba " << szukana << " znajduje się w tablicy na indeksie " << srodek << endl;
+        return;
+    }
+
+    for (int i = 0; i < rozmiar; i++) {
+        if (szukana == tab[i]) {
+            cout << "wyszukiwanie skokowe: Liczba " << szukana << " znajduje się w tablicy na indeksie " << i << endl;
+            return;
+        }
+    }
+
+    cout << "wyszukiwanie skokowe: Liczba " << szukana << "  znajduje się w tablicy na indeskie -1" ;
+}
 int main() {
     const int rozmiar= 12;
     int tab[rozmiar]={12,3,45,65,18,23,45,13,10,27,49,1};
@@ -80,5 +110,6 @@ int main() {
     wyszkiwanie_liniowe(tab,rozmiar);
     wyszkiwanie_z_wartowniekiem(tab,rozmiar);
     wyszkiwanie_binarne(tab,rozmiar);
+    wyszukiwanie_skokowe(tab,rozmiar);
     return 0;
 }
